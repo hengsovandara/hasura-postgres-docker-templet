@@ -17,30 +17,20 @@ services:
     environment:
       HASURA_GRAPHQL_DATABASE_URL: "${DEFAULT_POSTGRES_STRING}/${CRM_DATABASE}"
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
-      HASURA_GRAPHQL_AUTH_HOOK: "${BASE_CRM_SERVERLESS_URL}/auth"
-      HASURA_GRAPHQL_AUTH_HOOK_MODE: POST
-      HASURA_GRAPHQL_ADMIN_SECRET: dara
-      ENCRYPT_PIN: "${BASE_CRM_SERVERLESS_URL}/encryptPin"
-      ACTIVITIES: "${BASE_CRM_SERVERLESS_URL}/activities"
-      SCORE: "${BASE_CRM_SERVERLESS_URL}/scoring"
-      SYNC_EKYM: "${BASE_CRM_SERVERLESS_URL}/syncEkym"
-  # graphql-engine-crm-stage:
-  #   image: hasura/graphql-engine:v1.0.0-beta.2
-  #   ports:
-  #   - "8083:8080"
-  #   depends_on:
-  #   - "postgres"
-  #   restart: always
-  #   environment:
-  #     HASURA_GRAPHQL_DATABASE_URL: ${DEFAULT_POSTGRES_STRING}/crm-stage
-  #     HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
-  #     HASURA_GRAPHQL_AUTH_HOOK: "${BASE_CRM_SERVERLESS_URL}/auth"
-  #     HASURA_GRAPHQL_AUTH_HOOK_MODE: POST
-  #     HASURA_GRAPHQL_ADMIN_SECRET: dara
-  #     ENCRYPT_PIN: "${BASE_CRM_SERVERLESS_URL}/encryptPin"
-  #     ACTIVITIES: "${BASE_CRM_SERVERLESS_URL}/activities"
-  #     SCORE: "${BASE_CRM_SERVERLESS_URL}/scoring"
-  #     SYNC_EKYM: "${BASE_CRM_SERVERLESS_URL}/syncEkym"
+
+      # Here is the auth hook of hasura || Checking authentication
+      # HASURA_GRAPHQL_AUTH_HOOK: "${BASE_CRM_SERVERLESS_URL}/auth"
+      # HASURA_GRAPHQL_AUTH_HOOK_MODE: POST
+
+      # Add admin secret for accessing hasura with more security ( Private )
+      # HASURA_GRAPHQL_ADMIN_SECRET: dara
+
+      # Variables below are for event trigger of Hasura
+      # ENCRYPT_PIN: "${BASE_CRM_SERVERLESS_URL}/encryptPin"
+      # ACTIVITIES: "${BASE_CRM_SERVERLESS_URL}/activities"
+      # SCORE: "${BASE_CRM_SERVERLESS_URL}/scoring"
+      # SYNC_EKYM: "${BASE_CRM_SERVERLESS_URL}/syncEkym"
+
   graphql-engine-ekmc-dev:
     image: hasura/graphql-engine:v1.0.0-beta.2
     ports:
@@ -52,27 +42,16 @@ services:
     environment:
       HASURA_GRAPHQL_DATABASE_URL: "${DEFAULT_POSTGRES_STRING}/${EKMC_DATABASE}"
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
-      HASURA_GRAPHQL_AUTH_HOOK: "${BASE_EKMC_SERVERLESS_URL}/auth"
-      HASURA_GRAPHQL_AUTH_HOOK_MODE: POST
-      HASURA_GRAPHQL_ADMIN_SECRET: dara
-      ENCRYPT_PIN: "${BASE_EKMC_SERVERLESS_URL}/encryptPin"
-      ACTIVITIES: "${BASE_EKMC_SERVERLESS_URL}/activities"
-  # graphql-engine-staging-dev:
-  #   image: hasura/graphql-engine:v1.0.0-beta.2.cli-migrations
-  #   ports:
-  #   - "8084:8080"
-  #   depends_on:
-  #   - "postgres"
-  #   restart: always
-  #   volumes:
-  #   - ~/workSpace/Clik/dev-env/hasura-migrations-dev/ekmc-dev/migrations:/hasura-migrations
-  #   environment:
-  #     HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:@postgres:5432/ekmc-stage
-  #     HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
-  #     HASURA_GRAPHQL_AUTH_HOOK: "${BASE_EKMC_SERVERLESS_URL}/auth"
-  #     HASURA_GRAPHQL_AUTH_HOOK_MODE: POST
-  #     HASURA_GRAPHQL_ADMIN_SECRET: dara
-  #     ENCRYPT_PIN: "${BASE_EKMC_SERVERLESS_URL}/encryptPin"
-  #     ACTIVITIES: "${BASE_EKMC_SERVERLESS_URL}/activities"
+
+      # Here is the auth hook of hasura || Checking authentication
+      # HASURA_GRAPHQL_AUTH_HOOK: "${BASE_EKMC_SERVERLESS_URL}/auth"
+      # HASURA_GRAPHQL_AUTH_HOOK_MODE: POST
+
+      # Add admin secret for accessing hasura with more security ( Private )
+      # HASURA_GRAPHQL_ADMIN_SECRET: dara
+
+      # Variables below are for event trigger of Hasura
+      # ENCRYPT_PIN: "${BASE_EKMC_SERVERLESS_URL}/encryptPin"
+      # ACTIVITIES: "${BASE_EKMC_SERVERLESS_URL}/activities"
 volumes:
   db_data:

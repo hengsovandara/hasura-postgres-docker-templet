@@ -2,7 +2,7 @@
 I have wrapped images of Hasura &amp; Postgre in docker-compose, and also a script to run start the service also create database in postgres.
 
 # How To Start
-- First you need to have docker service in your device.
+- First you need to have docker service in your device. [Docker](https://docs.docker.com/install/)
 - Start your docker service
 - cd into the templet folder
 - run command to exec the bash script
